@@ -1,0 +1,7 @@
+node_modules
+.env
+/generated/prisma
+prisma
+package-lock.json
+package.json
+.gitignore
