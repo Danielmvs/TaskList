@@ -1,30 +1,21 @@
-import { PrismaClient } from '../../generated/prisma/index.js';
-const prisma = new PrismaClient();
-
-export const getUserById =  async (req, res) =>{
-    console.log(req);
-   let user = await prisma.user.findMany({
-        where: {
-            id: req.query.id
-        }
-    });
-    res.status(200).json(user);
+import User from '../models/userModel'
+export const getUser =  async (req, res) =>{
+    let user = await User.getUserById(req.body.id)
+    res.status(200).json(user)
     
 };
 
-export const getUserAll = async (req, res) => {
+export const getUsers = async (req, res) => {
     
-    let users =  await prisma.user.findMany();
-    res.status(200).json(users);
 };
 
-export const createUser = () => {
+export const createUser = (req, res) => {
 
 };
-export const updateUser = () => {
+export const updateUser = (req, res) => {
 
 };
-export const deleteUser = ()=> {
+export const deleteUser = (req, res)=> {
 
 };
 
