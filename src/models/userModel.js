@@ -24,7 +24,7 @@ class User {
     static async createUser(data){
         const user = await prisma.user.create({
             data
-        })
+        }) 
     };
     static async updateUser(id , data) {
         const user = await prisma.user.update({
@@ -39,6 +39,6 @@ class User {
     
     };
     
-    
    
 }
+export default User;

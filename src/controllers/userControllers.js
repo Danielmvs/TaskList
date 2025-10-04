@@ -1,22 +1,27 @@
 import User from '../models/userModel'
-export const getUser =  async (req, res) =>{
-    let user = await User.getUserById(req.body.id)
+const user = [];
+
+export const controllerGetUserbyId =  async (req, res) =>{
+    user = await User.getUserById(req.param)
     res.status(200).json(user)
     
 };
-
-export const getUsers = async (req, res) => {
-    
+export const controllerGetUserAll = async (req, res) => {
+    user = await User.getUserAll()
+    res.status(200).json(user)
 };
 
-export const createUser = (req, res) => {
-
+export const controllerCreateUser = async (req, res) => {
+     user = await User.createUser(req.body)
+     res.status(200).json(user)
 };
-export const updateUser = (req, res) => {
-
+export const controllerUpdateUser = async(req, res) => {
+    user = await User.updateUser(req.body.id, req.body)
+    res.status(200).json(user)
 };
-export const deleteUser = (req, res)=> {
-
+export const controllerDeleteUser =  async (req, res)=> {
+    user = await User.deleteUser(req.body.id)
+    res.status(200).json(user)
 };
 
 
