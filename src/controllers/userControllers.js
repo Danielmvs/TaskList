@@ -2,13 +2,13 @@ import User from '../models/userModel'
 const user = [];
 
 export const controllerGetUserbyId =  async (req, res) =>{
-    user = await User.getUserById(req.param)
-    res.status(200).json(user)
+    user = await User.getUserById(req.param.id);
+    res.status(200).json(user);
     
 };
 export const controllerGetUserAll = async (req, res) => {
-    user = await User.getUserAll()
-    res.status(200).json(user)
+    user = await User.getUserAll();
+    res.status(200).json(user);
 };
 
 export const controllerCreateUser = async (req, res) => {
