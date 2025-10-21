@@ -1,4 +1,4 @@
-import User from '../models/userModel'
+import User from '../models/userModel.js'
 const user = [];
 
 export const controllerGetUserbyId =  async (req, res) =>{
@@ -12,10 +12,13 @@ export const controllerGetUserAll = async (req, res) => {
 };
 
 export const controllerCreateUser = async (req, res) => {
-     user = await User.createUser(req.body)
-     res.status(200).json(user)
+    console.log(req);
+    const {name,  email, password} = req.body;
+    const newUser = new User(name, email, password);
+    await newUser.saveUser();
+    res.status(200).json(newUser);
 };
-export const controllerUpdateUser = async(req, res) => {
+/* export const controllerUpdateUser = async(req, res) => {
     user = await User.updateUser(req.body.id, req.body)
     res.status(200).json(user)
 };
@@ -23,62 +26,7 @@ export const controllerDeleteUser =  async (req, res)=> {
     user = await User.deleteUser(req.body.id)
     res.status(200).json(user)
 };
+ */
 
 
 
-
-
-// app.post('/users', async (req, res) => {
-//     await prisma.user.create({
-//         data: {
-//             name: req.body.name,
-//             email: req.body.email,
-//             age: req.body.age
-//         }
-//     })
-//     res.status(201).json(req.body);
-// });
-
-//  app.put('/users/:id', async (req, res) => {
-    
-//     await prisma.user.update({
-//         where: {
-//             id: req.params.id
-//         },
-//         data: {
-//             name: req.body.name,
-//             email: req.body.email,
-//             age: req.body.age
-//         }
-//     })
-//     res.status(201).json(req.body);
-// });
-
-// app.delete('/users/:id', async (req, res) => {
-    
-//     await prisma.user.delete({
-//         where: {
-//             id: req.params.id
-//         }
-        
-//     })
-//     res.status(200).json({msg: 'usuario deletado'});
-// });
-
-// app.get('/users', async (req, res) => {
-
-//     let users = [];
-//     if(req.query){
-//         users = await prisma.user.findMany({
-//             where:{
-//                 name: req.query.name,
-//                 age: req.query.age,
-//                 email: req.query.email
-//             }
-//         });
-//     } else {
-//          users = await prisma.user.findMany();
-//     }
-
-//     res.status(200).json(users);
-// });

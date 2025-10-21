@@ -3,17 +3,17 @@ import {
     controllerGetUserbyId, 
     controllerGetUserAll, 
     controllerCreateUser, 
-    controllerUpdateUser,
-    controllerDeleteUser
+    //controllerUpdateUser,
+    //controllerDeleteUser
 } from '../controllers/userControllers.js';
 
 const userRoutes = Router();
 
 userRoutes.get('/:id', controllerGetUserbyId);
 userRoutes.get('/', controllerGetUserAll);
-userRoutes.post('/users', controllerCreateUser);
-userRoutes.put('/users/:id', controllerUpdateUser);
-userRoutes.delete('/users/:id', controllerDeleteUser);
+userRoutes.post('/user', controllerCreateUser);
+//userRoutes.put('/users/:id', controllerUpdateUser);
+//userRoutes.delete('/users/:id', controllerDeleteUser);
 
 export default userRoutes;
 

@@ -1,5 +1,5 @@
-import { PrismaClient } from "../../generated/prisma";
- const prisma = new PrismaClient();
+import { PrismaClient } from '../../generated/prisma/index.js';
+const prisma = new PrismaClient();
  
 export class Category {
     constructor(name, authorId) {
@@ -25,4 +25,4 @@ export class Category {
         });
         return category;
     };
-}
+}export default Category;

@@ -1,4 +1,4 @@
-import { PrismaClient } from '../../generated/prisma';
+import { PrismaClient } from '../../generated/prisma/index.js';
 const prisma = new PrismaClient();
 
 export class Task{
@@ -10,7 +10,7 @@ export class Task{
         this.authorId = authorId;
         this.categoryId = categoryId;
     }
-    async getTaskById() {
+    static async getTaskById() {
         const task = await prisma.task.findMany({
             where:{
                 id: this.id
@@ -21,7 +21,7 @@ export class Task{
         });
         return task;
     };
-    async getTasksAll() {
+   static async getTasksAll() {
         const tasks = await prisma.task.findMany({
             where:{
                 authorId: this.authorId
@@ -41,5 +41,5 @@ export class Task{
         });
         return task;
     };
-  
 }
+export default Task;
